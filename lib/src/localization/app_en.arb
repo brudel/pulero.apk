@@ -1,0 +1,6 @@
+{
+  "appTitle": "pulero_apk",
+  "@appTitle": {
+    "description": "The title of the application"
+  }
+}

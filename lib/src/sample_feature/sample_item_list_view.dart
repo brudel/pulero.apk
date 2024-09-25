@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 import '../settings/settings_view.dart';
 import 'sample_item.dart';
@@ -19,7 +20,7 @@ class SampleItemListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sample Items'),
+        title: const Text('Home Page'),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
@@ -44,14 +45,20 @@ class SampleItemListView extends StatelessWidget {
         // scroll position when a user leaves and returns to the app after it
         // has been killed while running in the background.
         restorationId: 'sampleItemListView',
-        itemCount: items.length,
+        itemCount: items.length + 1,
         itemBuilder: (BuildContext context, int index) {
-          final item = items[index];
+          if (index == 0) {
+            return SfCalendar(
+              view: CalendarView.month,
+              monthViewSettings: MonthViewSettings(),
+            );
+          }
+          final item = items[index - 1];
 
           return ListTile(
-            title: Text('SampleItem ${item.id}'),
+            title: Text('Event number ${item.id}'),
             leading: const CircleAvatar(
-              // Display the Flutter Logo image asset.
+              // Display the Flutter Logo image asset.z
               foregroundImage: AssetImage('assets/images/flutter_logo.png'),
             ),
             onTap: () {
@@ -66,6 +73,31 @@ class SampleItemListView extends StatelessWidget {
           );
         },
       ),
+
+      bottomNavigationBar: NavigationBar(
+				onDestinationSelected: (int index) {
+				},
+
+				selectedIndex: 0,
+
+				destinations: const <Widget>[
+					NavigationDestination(
+						selectedIcon: Icon(Icons.home),
+						icon: Icon(Icons.home_outlined),
+						label: 'Home',
+					),
+
+					NavigationDestination(
+						icon: Icon(Icons.diamond),
+						label: 'República',
+					),
+
+					NavigationDestination(
+						icon: Icon(Icons.align_vertical_bottom),
+						label: 'Adiministração',
+					),
+				],
+			),
     );
   }
 }

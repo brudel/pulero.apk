@@ -59,12 +59,12 @@ class _RootPageState extends State<RootPage> {
 					),
 
 					NavigationDestination(
-						icon: Icon(Icons.diamond),
+						icon: Icon(Icons.house),
 						label: 'República',
 					),
 
 					NavigationDestination(
-						icon: Icon(Icons.align_vertical_bottom),
+						icon: Icon(Icons.admin_panel_settings),
 						label: 'Adiministração',
 					),
 				],
